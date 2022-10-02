@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerScript : MonoBehaviour
+public class StoreScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,12 +13,12 @@ public class CustomerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // OnTriggerStay2D(gameObject.GetComponent<Collider2D>());
+        
     }
 
     void OnTriggerStay2D(Collider2D other) {
         if (Input.GetKeyDown(KeyCode.Space) && other.gameObject.tag == "Player") {
-            Debug.Log("Player interacted with customer");
+            Debug.Log("Player interacted with store");
         }
     }
 }
