@@ -17,6 +17,7 @@ public class StoreScript : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D other) {
+        Debug.Log("Player is close to a store");
         if (Input.GetKeyDown(KeyCode.Space) && other.gameObject.tag == "Player") {
             Debug.Log("Player interacted with store");
         }

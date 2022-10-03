@@ -17,7 +17,8 @@ public class CustomerScript : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D other) {
-        if (Input.GetKeyDown(KeyCode.Space) && other.gameObject.tag == "Player") {
+        Debug.Log("Player is close to a customer");
+        if (Input.GetKeyUp(KeyCode.Space) && other.gameObject.tag == "Player") {
             Debug.Log("Player interacted with customer");
         }
     }
