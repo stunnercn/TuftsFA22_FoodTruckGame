@@ -884,7 +884,6 @@ GameObject:
   - component: {fileID: 1806118864}
   - component: {fileID: 1806118866}
   - component: {fileID: 1806118867}
-  - component: {fileID: 1806118869}
   - component: {fileID: 1806118868}
   m_Layer: 0
   m_Name: Truck
@@ -991,25 +990,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1806118861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d85462eb78e41142afcbf5a570a25c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 63f6d431950044a53aa0d85514c8c8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1806118869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806118861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408eb155a022e514496ba450878bba22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  driftFactor: 0.95
-  accelerationFactor: 30
-  turnFactor: 3.5
-  maxSpeed: 5
+  moveSpeed: 5
 --- !u!1 &2018576858
 GameObject:
   m_ObjectHideFlags: 0
