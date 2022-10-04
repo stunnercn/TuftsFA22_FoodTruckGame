@@ -21,6 +21,11 @@ public class TempTruckScript : MonoBehaviour
     }
 
     private void FixedUpdate() {  
-        body.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        Vector2 moveDirection = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        body.velocity = moveDirection;
+        if (moveDirection.x != 0 || moveDirection.y != 0) {
+            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
+            transform.rotation = rotation * Quaternion.Euler(0f, 0f, 90f);
+        }
     }
 }
