@@ -65,7 +65,7 @@ public class TopDownTruckController : MonoBehaviour
 
     void ApplySteering() {
 
-        float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.velocity.magnitude / 4);
+        float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.velocity.magnitude / 2);
 
         minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
