@@ -676,7 +676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   driftFactor: 0.25
   accelerationFactor: 15
-  turnFactor: 0.35
+  turnFactor: 2.5
   maxSpeed: 10
 --- !u!50 &674937199
 Rigidbody2D:
