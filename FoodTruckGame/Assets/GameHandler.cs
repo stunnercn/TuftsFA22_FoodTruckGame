@@ -13,6 +13,8 @@ public class GameHandler : MonoBehaviour
 
     public GameObject moneyText;
 
+    public GameObject GameOver;
+
     private int[] numVals = new int[5];
 
     public enum Field {
@@ -68,6 +70,10 @@ public class GameHandler : MonoBehaviour
         foreach(Field field in System.Enum.GetValues(typeof(Field))) {
             UpdateField(field);
         }
+    }
+
+    public void GameOverScreen() {
+        GameOver.SetActive(true);
     }
     
 }
