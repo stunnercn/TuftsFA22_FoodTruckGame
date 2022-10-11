@@ -995,10 +995,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408eb155a022e514496ba450878bba22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  driftFactor: 0.25
-  accelerationFactor: 15
-  turnFactor: 2.5
-  maxSpeed: 10
+  driftFactor: 0.1
+  accelerationFactor: 10
+  turnFactor: 4.5
+  maxSpeed: 7.5
 --- !u!50 &674937199
 Rigidbody2D:
   serializedVersion: 4
