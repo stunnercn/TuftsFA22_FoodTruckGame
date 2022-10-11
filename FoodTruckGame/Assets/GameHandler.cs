@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class GameHandler : MonoBehaviour
 {
 
-
-
     public GameObject meatText;
     public GameObject beansText;
     public GameObject veggiesText;
@@ -15,7 +13,7 @@ public class GameHandler : MonoBehaviour
 
     public GameObject moneyText;
 
-    private int[] numVals = new int[5]; // 0 is the default value
+    private int[] numVals = new int[5];
 
     public enum Field {
         Money,
@@ -32,6 +30,12 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        numVals[(int) Field.Money] = 0;
+        numVals[(int) Field.Meat] = 5;
+        numVals[(int) Field.Beans] = 5;
+        numVals[(int) Field.Veggies] = 5;
+        numVals[(int) Field.Tortillas] = 5;
+
         textObjList[(int) Field.Money] = moneyText;
         textObjList[(int) Field.Meat] = meatText;
         textObjList[(int) Field.Beans] = beansText;
