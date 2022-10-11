@@ -9,11 +9,16 @@ public class TimerScript : MonoBehaviour
     public bool timerOn = false;
 
     public Text timerUI;
+    GameHandler gameHandlerObj;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         timerOn = true;   
+
+        gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
     }
 
     // Update is called once per frame
@@ -28,6 +33,9 @@ public class TimerScript : MonoBehaviour
                 timeLeft = 0;
                 timerOn = false;
             }
+        }
+        else {
+            gameHandlerObj.GameOverScreen();
         }
     }
 
