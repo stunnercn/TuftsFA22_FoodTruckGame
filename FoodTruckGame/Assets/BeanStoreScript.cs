@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoreScript : MonoBehaviour
+public class BeanStoreScript : MonoBehaviour
 {
-
     public GameHandler gameHandlerObj;
 
     // Start is called before the first frame update
@@ -23,9 +22,9 @@ public class StoreScript : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other) {
         if (Input.GetKeyDown(KeyCode.Space) && other.gameObject.tag == "Player") {
-            gameHandlerObj.AddToField(GameHandler.Field.Meat, 1);
+            gameHandlerObj.AddToField(GameHandler.Field.Beans, 1);
             gameHandlerObj.AddToField(GameHandler.Field.Money, -1);
-            Debug.Log("Player interacted with store, giving meat");
+            Debug.Log("Player interacted with store, giving beans");
         }
     }
 }
