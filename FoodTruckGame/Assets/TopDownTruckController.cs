@@ -55,7 +55,7 @@ public class TopDownTruckController : MonoBehaviour
             return;
 
         if (accelerationInput == 0)
-            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 3.0f, Time.fixedDeltaTime * 3);
+            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 10.0f, Time.fixedDeltaTime * 3);
         else carRigidbody2D.drag = 0;
 
         Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
