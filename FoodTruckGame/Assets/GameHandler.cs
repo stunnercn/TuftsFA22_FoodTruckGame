@@ -11,6 +11,8 @@ public class GameHandler : MonoBehaviour
     public GameObject veggiesText;
     public GameObject tortillasText;
 
+    public GameObject insufficientText;
+
     public GameObject moneyText;
 
     public GameObject GameOver;
@@ -32,6 +34,7 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        insufficientText.SetActive(false);
         numVals[(int) Field.Money] = 0;
         numVals[(int) Field.Meat] = 5;
         numVals[(int) Field.Beans] = 5;
@@ -75,5 +78,20 @@ public class GameHandler : MonoBehaviour
     public void GameOverScreen() {
         GameOver.SetActive(true);
     }
+
+    public int GetNum(Field field) {
+        return numVals[(int) field];
+    }
     
+    IEnumerator ShowInsufficientMessageRoutine(System.String message) {
+        insufficientText.GetComponent<Text>().text = message;
+        insufficientText.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        insufficientText.SetActive(false);
+    }
+
+    public void ShowInsufficientMessage(System.String message) {
+        StartCoroutine(ShowInsufficientMessageRoutine(message));
+    }
+
 }

@@ -22,9 +22,14 @@ public class BeanStoreScript : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other) {
         if (Input.GetKeyDown(KeyCode.Space) && other.gameObject.tag == "Player") {
-            gameHandlerObj.AddToField(GameHandler.Field.Beans, 1);
-            gameHandlerObj.AddToField(GameHandler.Field.Money, -1);
-            Debug.Log("Player interacted with store, giving beans");
+            if (gameHandlerObj.GetNum(GameHandler.Field.Money) > 0) {
+                gameHandlerObj.AddToField(GameHandler.Field.Beans, 1);
+                gameHandlerObj.AddToField(GameHandler.Field.Money, -1);
+                Debug.Log("Player interacted with store, giving beans");
+            } else {
+                gameHandlerObj.ShowInsufficientMessage("Not enough money to buy beans");
+            }
+            
         }
     }
 }

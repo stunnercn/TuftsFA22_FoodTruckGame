@@ -24,11 +24,17 @@ public class CustomerScript : MonoBehaviour
     void OnTriggerStay2D(Collider2D other) {
         if (Input.GetKeyUp(KeyCode.Space) && other.gameObject.tag == "Player") {
             Debug.Log("Player interacted with customer");
-            gameHandlerObj.AddToField(GameHandler.Field.Money, 2);
-            gameHandlerObj.AddToField(GameHandler.Field.Meat, -1);
-            gameHandlerObj.AddToField(GameHandler.Field.Beans, -1);
-            gameHandlerObj.AddToField(GameHandler.Field.Tortillas, -1);
-            Destroy(this.gameObject);
+            if (gameHandlerObj.GetNum(GameHandler.Field.Tortillas) > 0 && 
+                gameHandlerObj.GetNum(GameHandler.Field.Meat) > 0 && 
+                gameHandlerObj.GetNum(GameHandler.Field.Beans) > 0) {
+                gameHandlerObj.AddToField(GameHandler.Field.Money, 4);
+                gameHandlerObj.AddToField(GameHandler.Field.Meat, -1);
+                gameHandlerObj.AddToField(GameHandler.Field.Beans, -1);
+                gameHandlerObj.AddToField(GameHandler.Field.Tortillas, -1);
+                Destroy(this.gameObject);
+            } else {
+                gameHandlerObj.ShowInsufficientMessage("Not enough ingredients");
+            }
         }
     }
 }
