@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
+    // Pause Menu stuff:
+    public static int playerStat;
+    public static bool GameisPaused = false;
+    public GameObject pauseMenuUI;
 
+    // Everything else:
     public GameObject meatText;
     public GameObject beansText;
     public GameObject veggiesText;
@@ -18,6 +24,10 @@ public class GameHandler : MonoBehaviour
     public GameObject GameOver;
 
     private int[] numVals = new int[5];
+
+    void Awake (){
+
+    }
 
     public enum Field {
         Money,
@@ -34,6 +44,8 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pauseMenuUI.SetActive(false);
+        GameisPaused = false;
         insufficientText.SetActive(false);
         numVals[(int) Field.Money] = 0;
         numVals[(int) Field.Meat] = 5;
@@ -52,9 +64,57 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      if (Input.GetKeyDown(KeyCode.Escape)){
+          if (GameisPaused){
+              Resume();
+          }
+          else{
+              Pause();
+          }
+      }
+    }
+// --- Pause Menu ---
+    void Pause(){
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameisPaused = true;
     }
 
+    public void Resume(){
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameisPaused = false;
+    }
+
+    public void RestartGame(){
+        Time.timeScale = 1f;
+        // Add commands to zero-out any scores or other stats before restarting
+        pauseMenuUI.SetActive(false);
+        GameisPaused = false;
+        insufficientText.SetActive(false);
+        numVals[(int) Field.Money] = 0;
+        numVals[(int) Field.Meat] = 5;
+        numVals[(int) Field.Beans] = 5;
+        numVals[(int) Field.Veggies] = 5;
+        numVals[(int) Field.Tortillas] = 5;
+
+        textObjList[(int) Field.Money] = moneyText;
+        textObjList[(int) Field.Meat] = meatText;
+        textObjList[(int) Field.Beans] = beansText;
+        textObjList[(int) Field.Veggies] = veggiesText;
+        textObjList[(int) Field.Tortillas] = tortillasText;
+        UpdateAll();
+        SceneManager.LoadScene("Start");
+    }
+
+    public void QuitGame(){
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
+// ---
     public void AddToField(Field field, int numToAdd) {
         numVals[(int) field] += numToAdd;
         UpdateField(field);
@@ -82,7 +142,7 @@ public class GameHandler : MonoBehaviour
     public int GetNum(Field field) {
         return numVals[(int) field];
     }
-    
+
     IEnumerator ShowInsufficientMessageRoutine(System.String message) {
         insufficientText.GetComponent<Text>().text = message;
         insufficientText.SetActive(true);
