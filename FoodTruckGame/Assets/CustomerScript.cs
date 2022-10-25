@@ -32,6 +32,8 @@ public class CustomerScript : MonoBehaviour
                 gameHandlerObj.AddToField(GameHandler.Field.Beans, -1);
                 gameHandlerObj.AddToField(GameHandler.Field.Tortillas, -1);
                 Destroy(this.gameObject);
+                GameHandler.moneyMade += 4;
+                GameHandler.customersServed += 1;
             } else {
                 gameHandlerObj.ShowInsufficientMessage("Not enough ingredients");
             }

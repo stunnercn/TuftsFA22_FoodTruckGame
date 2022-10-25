@@ -25,6 +25,10 @@ public class GameHandler : MonoBehaviour
 
     private int[] numVals = new int[5];
 
+    public static int moneyMade = 0;
+
+    public static int customersServed = 0;
+
     void Awake (){
 
     }
@@ -137,6 +141,7 @@ public class GameHandler : MonoBehaviour
 
     public void GameOverScreen() {
         GameOver.SetActive(true);
+        SceneManager.LoadScene("End Scene");
     }
 
     public int GetNum(Field field) {
